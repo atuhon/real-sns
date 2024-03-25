@@ -48,7 +48,7 @@ route.delete("/:id", async (req, res) => {
   });
 //ユーザ情報の取得（タイムラインの表示（第三者でも閲覧可能部分））
 route.get("/:id", async (req, res) => {
-//ifを消してidでの認証を行わない。
+//ifを消してidでの認証を行わない
     try{
 
         const user=await User.findById(req.params.id)
