@@ -1,0 +1,106 @@
+.topbarContainer {
+  background-color: #2c517c;
+  height: 50px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  position: sticky;
+  /* stickey→上部に固定する */
+  top: 0;
+  z-index: 100;
+}
+.topbarLeft {
+  flex: 3;
+  /* flex: 3;→3/12の割合の比率になる */
+}
+.logo {
+  font-size: 24px;
+  color: white;
+  font-weight: bold;
+  margin-left: 20px;
+}
+
+.topbarCenter {
+  flex: 5;
+  /* flex: 3;→3/12の割合の比率になる */
+}
+.searchbar {
+  width: 100%;
+  height: 30px;
+  background-color: white;
+  border-radius: 25px;
+  display: flex;
+}
+.searchIcon {
+  font-size: 20px !important;
+  /* マテリアルアイコンのcssを変更する場合は!importantを設定して
+　　優先度を上げる
+*/
+  margin-left: 10px;
+  margin-right: 5px;
+  height: 30px !important;
+}
+.searchInput {
+  border: none;
+  width: 80%;
+  /* borderの線が消える
+       width: 80%;→要素内の大きさ
+    */
+}
+.searchInput:focus {
+  outline: none;
+  /* クリックした時に枠が表示されない */
+}
+
+.topbarRight {
+  flex: 4;
+  /* flex: 3;→3/12の割合の比率になる */
+  display: flex;
+  align-items: center;
+  /* aicで出る */
+  justify-content: space-around;
+  /* 均等配置=フレックスコンテナの主軸の幅に対して余白をもって等間隔に配置されます。 */
+  color: white;
+}
+.topbarItemIcons {
+  display: flex;
+  /*全体を囲う親要素に対してさらに囲う子要素を設定する事で
+    　flexにした時に要素間が離れない
+    */
+}
+.IconItem {
+  margin-right: 15px;
+  cursor: pointer;
+  position: relative;
+  margin-top: 5px;
+}
+.topbarImg {
+  width: 32px;
+  height: 32px;
+  border-radius: 50px;
+  cursor: pointer;
+  object-fit: cover;
+  /* object-fit: cover;→画像の比率を保った状態にしてくれる */
+}
+.topbarIconBadge {
+  position: absolute;
+  /*     position: relative;を親にして絶対値を指定する事ができる */
+  top: -5px;
+  /*    IconItem基準にした-5の位置に置くことができる */
+  right: -5px;
+  background-color: plum;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  font-size: 12px;
+}
+
+/* 
+flex
+→子要素が横並びになる
+表示幅の比率を決定→3:5:4
+　　flex:割合　で比率を決定できる
+*/
