@@ -32,9 +32,9 @@ export default function Topar() {
             <span className="topbarIconBadge">2</span>
             </div>
             {/* 同じ要素名でも一つ一つ指定したほうが良い */}
-            
+            <img src="/assets/person/1.jpeg" alt="" className="topbarImg" />
           </div>
-          <img src="/assets/person/1.jpeg" alt="" className="topbarImg" />
+        
         </div>
       </div>
  
