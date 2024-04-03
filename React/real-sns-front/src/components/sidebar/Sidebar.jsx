@@ -5,6 +5,7 @@ import Comment from '@mui/icons-material/CommentOutlined';
 import Bookmark from '@mui/icons-material/BookmarkAddedOutlined';
 import Person from '@mui/icons-material/Person2Outlined';
 import Setting from '@mui/icons-material/SettingsOutlined';
+import './Sidebar.css'
 
 export default function Sidebar() {
   return (
@@ -37,14 +38,24 @@ export default function Sidebar() {
                 </li>
             </ul>
             <hr className='sidebarHr'/>
-            <ul>
+            <ul className='sidebarFriendlist'>
                 <li className='sidebarFriends'>
-                    <img src="React/real-sns-front/public/assets/person/2.jpeg" alt="" 
+                    <img src="/assets/person/2.jpeg" 
+                    alt="" 
                     className='sidebarFriendName'/>
+                    <span>test user</span>
                 </li>
                 <li className='sidebarFriends'>
-                    <img src="React/real-sns-front/public/assets/person/2.jpeg" alt="" 
+                    <img src="/assets/person/2.jpeg" 
+                    alt="" 
                     className='sidebarFriendName'/>
+                    <span>test user</span>
+                </li>
+                <li className='sidebarFriends'>
+                    <img src="/assets/person/2.jpeg" 
+                    alt="" 
+                    className='sidebarFriendName'/>
+                    <span>test user</span>
                 </li>
             </ul>
 

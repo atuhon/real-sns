@@ -1,0 +1,64 @@
+.sidebar{
+    flex: 2.5;
+    height:100vh;
+}
+.sidebarWrapper{
+    padding:20px;
+}
+.sidebarFriendName{
+    width: 32px;
+    height: 32px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 10px;
+    
+}
+.sidebarList{
+    padding: 0;
+    list-style:none;
+}
+.sidebarListItem{
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 4px 6px;
+    cursor: pointer;
+    /* アイコンと名前の位置を揃える */
+
+box-shadow: 3px 7px 15px -5px #6568b8;
+border-radius: 10px;
+  /*box-shadowジェネレータで生成*/
+
+}
+.sidebarListItem:hover{
+    box-shadow: none;
+    /* hoverするとbox-shodowが消える */
+    transform: translateY(5px);
+    /* 沈み込みを表現できる */
+
+}
+.sidebarIcon{
+    font-size: 35px !important;
+    margin-right: 10px;
+    /* アイコンの大きさ変更 */
+}
+.sidebarListItemText{
+    font-size: 20px;
+    padding-top: 3px;
+}
+.sidebarHr{
+    margin:20px 0 ;
+    /* 上下のみ設定 */
+}
+.sidebarFriendlis{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.sidebarFriends{
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    /* 元から横に並んでいたが、位置を揃えるためにflexを使用 */
+}
