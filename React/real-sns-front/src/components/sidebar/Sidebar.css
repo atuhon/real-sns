@@ -27,6 +27,7 @@
 
 box-shadow: 3px 7px 15px -5px #6568b8;
 border-radius: 10px;
+transition: all 0.3s;
   /*box-shadowジェネレータで生成*/
 
 }
