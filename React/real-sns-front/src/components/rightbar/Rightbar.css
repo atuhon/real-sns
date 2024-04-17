@@ -1,3 +1,67 @@
 .rightbar{
     flex: 3.5;
+}.rightbarWrapper{
+    padding: 20px
 }
+.eventContainer{
+    display: flex;
+    align-items: center;
+}
+.starImg{
+    width: 40px;
+    height: 40px;
+    margin-right:5px;
+    object-fit: cover;
+}
+.eventText{
+    font-weight: 300;
+    font-size:15px;
+}
+.eventImg{
+    width: 100%;
+    border-radius: 10px;
+    margin: 25px 0;
+}
+.rightbarTitle{
+    margin-bottom: 20px;    
+}
+.rightbarFriendList{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+.rightbarFriend{
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+.rightbarProfileImgContainer{
+    margin-right: 10px;
+    position: relative;
+}
+/* .rightbarProfileImgContainerを親としてposition:absolute;の位置を決める */
+
+.profileImg{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+
+}
+.rightbarUsername{
+    font-weight: 550;
+}
+.rightbarOnline{
+    background-color: purple;
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    top: 0;
+    right: 0;
+    border:2px solid white;
+
+
+}
+/* .rightbarProfileImgContainerを親として絶対値を決める */
+

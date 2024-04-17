@@ -5,7 +5,7 @@ import MoreVert from "@mui/icons-material/MoreVert";
 export default function Post() {
   return (
     <div className="post">
-      <div className="postWarapper">
+      <div className="postWrapper">
         <div className="postTop">
           <div className="postTopLeft">
             <img
