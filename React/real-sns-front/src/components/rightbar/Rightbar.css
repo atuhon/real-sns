@@ -64,4 +64,19 @@
 
 }
 /* .rightbarProfileImgContainerを親として絶対値を決める */
+.promotionTitle{
+    font-size: 18px;
+    font-weight: 550;
+    margin-bottom: -10px;
+}
+.rightbarPromotionImg{
+    width: 85%;
+    border-radius: 10px;
+    margin: 20px 0px;
+}
+.promotionName{
+    font-size:small;
+    color: #434343;
+    margin-top:-20px ;
 
+}
