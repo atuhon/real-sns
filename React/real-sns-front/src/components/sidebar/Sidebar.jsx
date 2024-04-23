@@ -5,6 +5,8 @@ import Comment from '@mui/icons-material/CommentOutlined';
 import Bookmark from '@mui/icons-material/BookmarkAddedOutlined';
 import Person from '@mui/icons-material/Person2Outlined';
 import Setting from '@mui/icons-material/SettingsOutlined';
+import Friend from '../Friends/friend';
+import { Users } from '../../dummyData';
 import './Sidebar.css'
 
 export default function Sidebar() {
@@ -39,24 +41,14 @@ export default function Sidebar() {
             </ul>
             <hr className='sidebarHr'/>
             <ul className='sidebarFriendlist'>
-                <li className='sidebarFriends'>
-                    <img src="/assets/person/2.jpeg" 
-                    alt="" 
-                    className='sidebarFriendName'/>
-                    <span>test user</span>
-                </li>
-                <li className='sidebarFriends'>
-                    <img src="/assets/person/2.jpeg" 
-                    alt="" 
-                    className='sidebarFriendName'/>
-                    <span>test user</span>
-                </li>
-                <li className='sidebarFriends'>
-                    <img src="/assets/person/2.jpeg" 
-                    alt="" 
-                    className='sidebarFriendName'/>
-                    <span>test user</span>
-                </li>
+             {Users.map((user)=>(
+                <Friend user={user} key={user}/>
+
+             ))}
+
+                
+
+
             </ul>
 
         </div>
