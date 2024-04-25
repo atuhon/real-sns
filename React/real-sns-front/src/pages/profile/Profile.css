@@ -1,0 +1,43 @@
+.profile{
+    display: flex;
+
+}
+.profileRight{
+    flex:10.5;
+}
+.profileCover{
+    height:320px;
+    position:relative;
+}
+.profileCoverImg{
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    padding-bottom: 50px;
+}
+.profileUserImg{
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 120px;
+    height: 120px;
+    margin: auto;
+    top: 150px;
+ 
+    /* left rightが無いとどこかに行ってしまう */
+    /* margin:;auto →上下左右を良い感じに調節してくれる*/
+}
+.profileInfo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: -11px;
+
+}
+.profileInfoName{
+    font-size: 24px;
+}
+.profileRightBottom{
+    display: flex;
+}
