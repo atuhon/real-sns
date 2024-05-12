@@ -8,7 +8,7 @@ const postRoute = require("./routes/post");
 const mongoose=require('mongoose');
 //データべ―ス接続
 mongoose.connect('mongodb+srv://user:abc@cluster0.b3jpng4.mongodb.net/realsns?retryWrites=true&w=majority&appName=Cluster0').then(()=>{
-    console.log("接続")
+    console.log("DB接続")
 }).catch((e)=>{console.log(e)})
 
 const lisports=app.listen(PORT,()=>{console.log("起動した")})
