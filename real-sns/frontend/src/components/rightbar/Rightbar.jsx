@@ -4,16 +4,17 @@ import { Users } from "../../dummyData";
 import Online from '../online/Online';
 
 export default function Rightbar({profile}) {
+  const REACT_APP_PUBLIC_FOLDER=process.env.REACT_APP_PUBLIC_FOLDER
   const HomeRightBar=()=>{
     return (
       <>
    
         <div className="eventContainer">
-          <img src="assets/star.png" alt="" className='starImg'/>
+          <img src={REACT_APP_PUBLIC_FOLDER+"/star.png"} alt="" className='starImg'/>
           <span className="enentText">
             <b>フォロワー限定</b>イベント開催中</span>
         </div>
-        <img src="assets/ad.jpeg" alt="" className='eventImg'/>
+        <img src={REACT_APP_PUBLIC_FOLDER+"/ad.jpeg"} alt="" className='eventImg'/>
         <h4 className='rightTitle'>オンラインの友達</h4>
         <ul className='rightbarFriendList'>
           {Users.map((user)=>(
@@ -26,13 +27,13 @@ export default function Rightbar({profile}) {
         
         </ul>
         <p className="promotionTitle">プロモーション広告</p>
-        <img src="./assets/promotion/promotion1.jpeg" alt="" className='rightbarPromotionImg'/>
+        <img src=".//promotion/promotion1.jpeg" alt="" className='rightbarPromotionImg'/>
         <p className="promotionName">ショッピング</p>
 
-        <img src="./assets/promotion/promotion2.jpeg" alt="" className='rightbarPromotionImg'/>
+        <img src={REACT_APP_PUBLIC_FOLDER+"/promotion/promotion2.jpeg"} alt="" className='rightbarPromotionImg'/>
         <p className="promotionName">カーショップ</p>
 
-        <img src="./assets/promotion/promotion3.jpeg" alt="" className='rightbarPromotionImg'/>
+        <img src={REACT_APP_PUBLIC_FOLDER+"/promotion/promotion3.jpeg"}alt="" className='rightbarPromotionImg'/>
         <p className="promotiohName">ShinCode株式会社</p>
     </>
     )
@@ -49,23 +50,23 @@ export default function Rightbar({profile}) {
         <h4 className='rightbarTitle'>あなたの友達</h4>
         <div className="rightbarFollowings">
           <div className="rightbarFollowing">
-            <img src="/assets/person/1.jpeg" alt="" className='rightbarFollowingImg'/>
-            <span className='rightbarFollowingName'>Shin Code</span>
+            <img src={REACT_APP_PUBLIC_FOLDER+"/person/2.jpeg"} alt="" className='rightbarFollowingImg'/>
+            <span className='rightbarFollowingName'>msks</span>
           </div>
           <div className="rightbarFollowing">
-            <img src="assets/person/3.jpeg" alt="" className='rightbarFollowingImg'/>
+            <img src={REACT_APP_PUBLIC_FOLDER+"/person/3.jpeg"} alt="" className='rightbarFollowingImg'/>
             <span className='rightbarFollowingName'>kani</span>
           </div>
           <div className="rightbarFollowing">
-            <img src="assets/person/2.jpeg" alt="" className='rightbarFollowingImg'/>
+            <img src={REACT_APP_PUBLIC_FOLDER+"/person/2.jpeg"} alt="" className='rightbarFollowingImg'/>
             <span className='rightbarFollowingName'>onon</span>
           </div>
           <div className="rightbarFollowing">
-            <img src="assets/person/2.jpeg" alt="" className='rightbarFollowingImg'/>
+            <img src={REACT_APP_PUBLIC_FOLDER+"/person/2.jpeg"} alt="" className='rightbarFollowingImg'/>
             <span className='rightbarFollowingName'>坂戸西</span>
           </div>
           <div className="rightbarFollowing">
-            <img src="assets/person/2.jpeg" alt="" className='rightbarFollowingImg'/>
+            <img src={REACT_APP_PUBLIC_FOLDER+"/person/2.jpeg"} alt="" className='rightbarFollowingImg'/>
             <span className='rightbarFollowingName'>沼津北</span>
           </div>
         </div>

@@ -6,6 +6,7 @@ import "./Topbar.css";
 import { Link } from "react-router-dom";
 
 export default function Topar() {
+  const REACT_APP_PUBLIC_FOLDER=process.env.REACT_APP_PUBLIC_FOLDER
   return (
     <div className="topbarContainer">
       <div className="topbarLeft">
@@ -35,7 +36,7 @@ export default function Topar() {
             <span className="topbarIconBadge">2</span>
             </div>
             {/* 同じ要素名でも一つ一つ指定したほうが良い */}
-            <img src="/assets/person/1.jpeg" alt="" className="topbarImg" />
+            <img src={`${REACT_APP_PUBLIC_FOLDER}/person/2.jpeg `}alt="" className="topbarImg" />
           </div>
         
         </div>
