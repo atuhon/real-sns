@@ -4,6 +4,8 @@ import { Users } from "../../dummyData";
 import MoreVert from "@mui/icons-material/MoreVert";
 
 export default function Post({post}) {
+  const REACT_APP_PUBLIC_FOLDER=process.env.REACT_APP_PUBLIC_FOLDER
+  
   const [like,setLike]=useState(post.like);//いいねが押された数をカウントする、初期値はlikeの数
   const [isLiked,setIslike]=useState(false);// いいねが押された
   const [backgroundColor,setBackgroundColor]=useState({"backgroundColor":"#0f0a95"});
@@ -31,7 +33,7 @@ const handleLike=()=>{
         <div className="postTop">
           <div className="postTopLeft">
             <img
-              src={Users.filter((user)=>user.id===post.userId)[0].profilePicture}
+              src={ REACT_APP_PUBLIC_FOLDER+Users.filter((user)=>user.id===post.userId)[0].profilePicture}
               alt=""
               className="postProfileImg"
             />
@@ -44,10 +46,10 @@ const handleLike=()=>{
         </div>
         <div className="postCenter">
           <span className="postText">{post.desc}</span>
-          <img src={post.photo} alt="" className="postImg" />
+          <img src={REACT_APP_PUBLIC_FOLDER+post.photo} alt="" className="postImg" />
           <div className="postBottom">
           <div className="postBottomLeft">
-            <img src="./assets/heart.png" className="likeIcon"onClick={()=>handleLike()} />
+            <img src={REACT_APP_PUBLIC_FOLDER+"/heart.png"} className="likeIcon"onClick={()=>handleLike()} />
             <span className="postLoleCounter">{like}人がいいねを押しました</span>
           </div>
           <div className="postBottomright">

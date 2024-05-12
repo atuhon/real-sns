@@ -15,6 +15,8 @@ import Rightbar from "../../components/rightbar/Rightbar";
  *
  */
 export default function Profile() {
+  const REACT_APP_PUBLIC_FOLDER=process.env.REACT_APP_PUBLIC_FOLDER
+  //envファイルを使用する場合は一度サーバを落としてから再起動する
   return (
     <>
       <Topbar />
@@ -24,10 +26,10 @@ export default function Profile() {
           {/* Topの方が背景画像 */}
           <div className="profileRightTop">
             <div className="profileCover">
-              <img src="assets/post/3.jpeg" alt="" className="profileCoverImg" />
-              <img src="assets/person/1.jpeg" alt="" className="profileUserImg"/>
+             <img src={`${REACT_APP_PUBLIC_FOLDER}/post/3.jpeg`}alt="" className="profileCoverImg" />
+              <img src={`${REACT_APP_PUBLIC_FOLDER}/person/2.jpeg `}alt="" className="profileUserImg"/>
               <div className="profileInfo">
-                <div className="profileInfoName"><b>Shin Code</b></div>
+                <div className="profileInfoName"><b>Anal Player</b></div>
                 <span className="profileInfoDes">概要欄だよ♡</span>
                 </div>
             </div>
