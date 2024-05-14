@@ -89,19 +89,25 @@ postRoute.put("/:id/like", async (req, res) => {
   }
 });
 
-postRoute.get("/timline/get",async (req,res)=>{
+//ユーザ情報を取得してタイムラインの内容を取得
+postRoute.get("/timeline/:userId",async (req,res)=>{
   try{
-    const currentUser=await User.findById(req.body.userId);
+    const currentUser=await User.findById(req.params.userId);
+    // params→userIdから取得するためreq.paramsを使用して値を取り出す。
     const userPosts= await Post.find({userId:currentUser._id})//currentUserのpost内容をすべて取得している
-   // console.log(userPosts);
+   console.log(userPosts);
+
 //フォロー中の人の投稿内容を取得する
 const friendPosts=await Promise.all(//awaitの値（currentUser）を使う場合はいつ値が取得されるか分からないため、Promise.allでいつでも取得できるように待機しておく
   currentUser.following.map((friendId)=>{
     return Post.find({userId:friendId})
   })
 );
-return res.status(200).json(userPosts.concat(friendPosts))
-//concat→配列を結合する userPostsにfriendPostsの配列を結合させる
+return res.status(200).json(userPosts.concat(...friendPosts))
+/*concat→配列を結合する 
+userPostsにfriendPostsの配列を結合させる
+...friendPostで新規に配列として作成する（エラーになる）
+*/
 
   }catch(e){
     return res.status(500).json(e);

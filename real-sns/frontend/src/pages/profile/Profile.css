@@ -23,6 +23,7 @@
     height: 120px;
     margin: auto;
     top: 150px;
+    object-fit: cover;
  
     /* left rightが無いとどこかに行ってしまう */
     /* margin:;auto →上下左右を良い感じに調節してくれる*/

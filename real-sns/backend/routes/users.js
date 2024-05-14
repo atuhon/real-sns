@@ -58,7 +58,7 @@ route.get("/:id", async (req, res) => {
              そのため、userの値は変わらない
            */
         
-      res.status(200).json(other)//idに紐づいたユーザ情報の表示
+     return res.status(200).json(other)//idに紐づいたユーザ情報の表示
     }catch(e){
 
       return res.status(500).json("サーバーエラー");
