@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Profile.css";
 import Topbar from "../../components/Topbar";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Timeline from "../../components/timeline/Timeline";
 import Rightbar from "../../components/rightbar/Rightbar";
+import axios from "axios";
+
 
 /**
  *
@@ -15,11 +17,21 @@ import Rightbar from "../../components/rightbar/Rightbar";
  *
  */
 export default function Profile() {
+  const [user, setUser] = useState([]);
   const REACT_APP_PUBLIC_FOLDER=process.env.REACT_APP_PUBLIC_FOLDER
   //envファイルを使用する場合は一度サーバを落としてから再起動する
+  useEffect(() => {
+    const fetchUser = async () => {
+      const res = await axios.get(`/users?username=testman`);
+      console.log(res);
+      setUser(res.data);
+    };
+    fetchUser();
+  }, []);
+
   return (
     <>
-      <Topbar />
+      <Topbar/>
       <div className="profile">
         <Sidebar />
         <div className="profileRight">
@@ -29,8 +41,8 @@ export default function Profile() {
              <img src={`${REACT_APP_PUBLIC_FOLDER}/post/3.jpeg`}alt="" className="profileCoverImg" />
               <img src={`${REACT_APP_PUBLIC_FOLDER}/person/2.jpeg `}alt="" className="profileUserImg"/>
               <div className="profileInfo">
-                <div className="profileInfoName"><b>Anal Player</b></div>
-                <span className="profileInfoDes">概要欄だよ♡</span>
+                <div className="profileInfoName"><b>{user.username}</b></div>
+                <span className="profileInfoDes">{user.desc}</span>
                 </div>
             </div>
           </div>
@@ -42,8 +54,8 @@ export default function Profile() {
           
           */}
           <div className="profileRightBottom">
-            <Timeline />
-            <Rightbar profile/>
+            <Timeline username="testman" />
+            <Rightbar user={user}/>
           </div>
         </div>
       </div>

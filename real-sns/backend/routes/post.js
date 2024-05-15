@@ -21,17 +21,23 @@ postRoute.post("/", async (req, res) => {
 });
 //投稿内容の更新
 postRoute.put("/:id", async (req, res) => {
+  try{
   const post = await Post.findById(req.params.id);
+  console.log(post);
   if (post.userId === req.body.userId) {
     const updatepost = await post.updateOne({
       $set: req.body,
     });
 
-    res.status(200).json("投稿に成功しました");
+    res.status(200).json("投稿内容を更新しました");
   } else {
     return res.status(403).json("アカウントにログインしてください。");
-  }
-});
+  }}catch(e){
+    return res.status(403).json("エラー、idの打ち間違いかもしれません");
+
+  }}
+
+);
 
 //投稿内容の削除
 postRoute.delete("/:id/delete", async (req, res) => {
@@ -88,6 +94,34 @@ postRoute.put("/:id/like", async (req, res) => {
     res.status(500).json(e);
   }
 });
+
+//プロフィール画面用タイムライン
+postRoute.get("/profile/:username",async (req,res)=>{
+  try{
+    const user=await User.findOne({username:req.params.username});//名前から検索する場合はfindOneを使う（プロパティの追記が必要）
+
+    // params→userIdから取得するためreq.paramsを使用して値を取り出す。
+    const posts= await Post.find({userId:user._id})//currentUserのpost内容をすべて取得している
+   console.log(user);
+
+
+return res.status(200).json(posts)
+/*concat→配列を結合する 
+userPostsにfriendPostsの配列を結合させる
+...friendPostで新規に配列として作成する（エラーになる）
+*/
+
+  }catch(e){
+    return res.status(500).json(e);
+
+  }
+
+
+
+
+})
+
+
 
 //ユーザ情報を取得してタイムラインの内容を取得
 postRoute.get("/timeline/:userId",async (req,res)=>{
