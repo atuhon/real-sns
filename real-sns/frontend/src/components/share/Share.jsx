@@ -1,19 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ImageIcon from '@mui/icons-material/Image';
 import GifIcon from '@mui/icons-material/Gif';
 import FaceIcon from '@mui/icons-material/Face';
 import AnalyticsIcon from '@mui/icons-material/Analytics';
 import '../share/Share.css';
+import { useParams } from 'react-router-dom';
 
 
 
 
 export default function Share() {
+  const [user, setUser] = useState([]);
+  const username=useParams().username;
+  const REACT_APP_PUBLIC_FOLDER=process.env.REACT_APP_PUBLIC_FOLDER
   return (
     <div className="share">
         <div className="shareWrapper">
             <div className="shareTop">
-                <img src='/assets/person/1.jpeg' alt="" className='shareProfileImg' />
+                <img src={user.profilePicture ||
+                REACT_APP_PUBLIC_FOLDER + "/person/noAvatar.png"
+              } alt="" className='shareProfileImg' />
                 <input type="text" className='shareInput' placeholder='今何してるの'/>
             </div>
             <hr className='shareHr'/>

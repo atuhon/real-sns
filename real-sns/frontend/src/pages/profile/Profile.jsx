@@ -5,6 +5,8 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import Timeline from "../../components/timeline/Timeline";
 import Rightbar from "../../components/rightbar/Rightbar";
 import axios from "axios";
+import { useParams } from "react-router-dom";
+//URLのパラメータを取ってくることができる。
 
 
 /**
@@ -18,12 +20,13 @@ import axios from "axios";
  */
 export default function Profile() {
   const [user, setUser] = useState([]);
+  const username=useParams().username;
   const REACT_APP_PUBLIC_FOLDER=process.env.REACT_APP_PUBLIC_FOLDER
   //envファイルを使用する場合は一度サーバを落としてから再起動する
   useEffect(() => {
     const fetchUser = async () => {
-      const res = await axios.get(`/users?username=testman`);
-      console.log(res);
+      const res = await axios.get(`/users?username=${username}`);
+      console.log("Profileの内容",res);
       setUser(res.data);
     };
     fetchUser();
@@ -38,8 +41,11 @@ export default function Profile() {
           {/* Topの方が背景画像 */}
           <div className="profileRightTop">
             <div className="profileCover">
-             <img src={`${REACT_APP_PUBLIC_FOLDER}/post/3.jpeg`}alt="" className="profileCoverImg" />
-              <img src={`${REACT_APP_PUBLIC_FOLDER}/person/2.jpeg `}alt="" className="profileUserImg"/>
+             <img src={user.coverPicture||`${REACT_APP_PUBLIC_FOLDER}/post/3.jpeg`}alt="" className="profileCoverImg" />
+              <img src={
+                user.profilePicture ||
+                REACT_APP_PUBLIC_FOLDER + "/person/noAvatar.png"
+              }alt="" className="profileUserImg"/>
               <div className="profileInfo">
                 <div className="profileInfoName"><b>{user.username}</b></div>
                 <span className="profileInfoDes">{user.desc}</span>
@@ -54,9 +60,10 @@ export default function Profile() {
           
           */}
           <div className="profileRightBottom">
-            <Timeline username="testman" />
+            <Timeline username={username}/>
             <Rightbar user={user}/>
           </div>
+          {/* Timeline username={username}→この部分を動的にする事でqueryで渡ってきたユーザネームを反映させている */}
         </div>
       </div>
     </>

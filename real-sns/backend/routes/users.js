@@ -38,7 +38,7 @@ route.delete("/:id", async (req, res) => {
     return res.status(403).json("あなたは自分のアカウントのみ削除が可能です");
   }
 });
-//ユーザ情報の取得（タイムラインの表示（第三者でも閲覧可能部分））
+
 // route.get("/:id", async (req, res) => {
 // //ifを消してidでの認証を行わない
 //     try{
@@ -56,6 +56,9 @@ route.delete("/:id", async (req, res) => {
 //       return res.status(500).json("サーバーエラー");
 //     }
 // });
+
+
+//ユーザ情報の取得（タイムラインの表示（第三者でも閲覧可能部分））
 //クエリを使用しidを使用しないため/を指定する。
 route.get("/", async (req, res) => {
   //query→?username=以降の文字列を持ってくる

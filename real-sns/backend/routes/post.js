@@ -95,31 +95,31 @@ postRoute.put("/:id/like", async (req, res) => {
   }
 });
 
-//プロフィール画面用タイムライン
+//プロフィール画面用タイムライン（自分の投稿のみ表示する）
 postRoute.get("/profile/:username",async (req,res)=>{
   try{
-    const user=await User.findOne({username:req.params.username});//名前から検索する場合はfindOneを使う（プロパティの追記が必要）
-
-    // params→userIdから取得するためreq.paramsを使用して値を取り出す。
-    const posts= await Post.find({userId:user._id})//currentUserのpost内容をすべて取得している
-   console.log(user);
-
-
+    
+    const user=await User.findOne({username:req.params.username});
+    const posts= await Post.find({userId:user._id})
+   console.log("postjs(user)の内容", user);
+   console.log("postjs(params)の内容",req.params.username)
+   console.log("postjs(posts)の内容",posts)
 return res.status(200).json(posts)
+  }catch(e){
+    return res.status(500).json(e);
+  }
+})
+
+//名前から検索する場合はfindOneを使う（プロパティの追記が必要）
+// params→userIdから取得するためreq.paramsを使用して値を取り出す。
+//const posts →currentUserのpost内容をすべて取得している
+
+
 /*concat→配列を結合する 
 userPostsにfriendPostsの配列を結合させる
 ...friendPostで新規に配列として作成する（エラーになる）
 */
 
-  }catch(e){
-    return res.status(500).json(e);
-
-  }
-
-
-
-
-})
 
 
 

@@ -4,19 +4,26 @@ import "../post/post.css";
 // import { Users } from "../../dummyData";
 import MoreVert from "@mui/icons-material/MoreVert";
 import { format } from "timeago.js";
+import { Link } from "react-router-dom";
 
 export default function Post({ post }) {
   const REACT_APP_PUBLIC_FOLDER = process.env.REACT_APP_PUBLIC_FOLDER;
 
-  const [like, setLike] = useState(post.like.length); //いいねが押された数をカウントする、初期値はlikeの数
-  const [isLiked, setIslike] = useState(false); // いいねが押された
-  const [user, setUser] = useState({}); //user情報取得のためオブジェクト型で設定する。
+  const [like, setLike] = useState(post.like.length);   
+  const [isLiked, setIslike] = useState(false); 
+  const [user, setUser] = useState({}); 
+
+  //const [like, setLike]→いいねが押された数をカウントする、初期値はlikeの数
+  //const [isLiked, setIslike] →いいねが押されたかどうかの判断
+  //const [user, setUser]→user情報取得のためオブジェクト型で設定する。
+
+
 
   // useEffectには直接asyncを付ける事ができないため、内部にもう一つ関数を作成する
   useEffect(() => {
     const fetchuser = async () => {
       try {
-        const resposnse = await axios.get(`/users/${post.userId}`);
+        const resposnse = await axios.get(`/users?userId=${post.userId}`);
         setUser(resposnse.data);
         console.log(resposnse);
       } catch (e) {
@@ -25,7 +32,7 @@ export default function Post({ post }) {
     };
     fetchuser();
     // 呼び出す
-  }, []);
+  }, [post.userId]);
 
   /*
   filter関数⇒条件に適合する値を残す
@@ -45,6 +52,7 @@ export default function Post({ post }) {
       <div className="postWrapper">
         <div className="postTop">
           <div className="postTopLeft">
+            <Link to={`/profile/${user.username}`}>
             <img
               // プロフィール写真が存在する場合はそれを適用して、ない場合はデフォルトの画像を適用する。
               src={
@@ -54,6 +62,7 @@ export default function Post({ post }) {
               alt=""
               className="postProfileImg"
             />
+            </Link>
             <span className="postUserName">{user.username}</span>
             <span className="postDate">{format(post.createdAt)}</span>
           </div>
