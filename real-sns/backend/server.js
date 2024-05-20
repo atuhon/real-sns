@@ -28,6 +28,8 @@ app.use("/api/posts", postRoute);
 app.use("/api/auth", authRoute);
 app.use("/api/users", route);
 
+
+
 app.get("/", (req, res) => {
   res.send("helloExpress");
 });
