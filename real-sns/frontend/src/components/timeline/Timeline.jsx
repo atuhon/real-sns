@@ -1,26 +1,30 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./Timeline.css";
 import Share from "../share/Share";
 import Post from "../post/Post";
 // import {Posts} from '../../dummyData';
 import axios from "axios";
+import { AuthContext } from "../../state/AuthContext";
 
 export default function Timeline({username}) {
+  const {user}=useContext(AuthContext);
 
   const [posts, setPosts] = useState([]);
-  useEffect(() => {
 
+  useEffect(() => {
     const fetchpost = async () => {
+
       const resposnse = username
-      ? await axios.get(`/posts/profile/${username}`) 
-      : await axios.get("/posts/timeline/6600202b8ad0a06ab42d2f94");
+      ? await axios.get(`/posts/profile/${username}`) //プロフィールの場合
+      : await axios.get(`/posts/timeline/${user._id}`);//ホームの場合
 
        console.log("TImelineの内容",resposnse.data);
       setPosts(resposnse.data);
     };
     fetchpost();
     // 呼び出す
-  }, [username]);
+  }, [username,user._id]);
+  //username user._idが更新されるため、プロフィールとムラインが更新される
 
   //? await axios.get(`/posts/profile/${username}`) →post.jsで作成したAPIを使用する。
 
