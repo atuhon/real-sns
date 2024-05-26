@@ -8,6 +8,9 @@ export default function Register() {
     const password=useRef();
     const passwordConfim=useRef();
     const navigate=useNavigate();
+    const loginSubmit= async (e)=>{
+        navigate("/login");
+    }
     const handleSubmit=async (e)=>{
         
         e.preventDefault();//ログイン時にリダイレクトされない
@@ -54,7 +57,9 @@ export default function Register() {
                     <input type="text" className="loginInput" placeholder='パスワード確認'  required minLength="6"  ref={passwordConfim} />
                     <button className="loginButton" type='submit'>新規登録</button>
                     <span className="loginForgot">パスワードを忘れるな</span>
-                    <button className="loginRegisterButton">アカウント作成</button>
+                    <form onSubmit={(e)=>{loginSubmit(e)}}>
+                    <button className="loginRegisterButton" type='submit'>ログイン</button>
+                    </form>
                     
                 </form>
             </div>

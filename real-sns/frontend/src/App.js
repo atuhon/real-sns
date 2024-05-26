@@ -17,12 +17,13 @@ function App() {
       <Routes>
         {/* element→pathの場合の遷移先を指定する */}
         <Route path="/" element={user ? <Home />:<Register/>} />
-        <Route path="/login" element={user ? <Navigate to="/"/>:<Login />} />
+        <Route path="/login"element={user?<Navigate to="/"/>:<Login/>}/>
+
         <Route path="/register" element={user ? <Navigate to="/"/>:<Register />} />
         <Route path="/profile/:username" element={<Profile />} />
       </Routes>
     </Router>
-    // user ? <Home />:<Register/>→userの情報が
+    // user ? <Home />:<Register/>→userの情報があれば
   );
 }
 

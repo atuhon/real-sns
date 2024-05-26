@@ -13,14 +13,25 @@ export default function Timeline({username}) {
 
   useEffect(() => {
     const fetchpost = async () => {
+      try{
 
       const resposnse = username
-      ? await axios.get(`/posts/profile/${username}`) //プロフィールの場合
-      : await axios.get(`/posts/timeline/${user._id}`);//ホームの場合
+      ? await axios.get(`/posts/profile/${user.username}`) //プロフィールの場合
+    : await axios.get(`/posts/timeline/${user._id}`);//ホームの場合
+      // : await axios.get(`/posts/timeline/6600202b8ad0a06ab42d2f94`)
 
-       console.log("TImelineの内容",resposnse.data);
-      setPosts(resposnse.data);
+     console.log("TImelineの内容",resposnse.data);
+     //sortして新しい順番に並び替える
+      setPosts(resposnse.data.sort((post1,post2)=>{
+        return new Date(post2.createdAt)-new Date(post1.createdAt)
+      }));
+      }catch(e){
+        console.log(user._id);
+        console.log(user.username);
+      }
     };
+    
+
     fetchpost();
     // 呼び出す
   }, [username,user._id]);

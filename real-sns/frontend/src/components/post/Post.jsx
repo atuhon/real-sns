@@ -1,10 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import "../post/post.css";
 // import { Users } from "../../dummyData";
 import MoreVert from "@mui/icons-material/MoreVert";
 import { format } from "timeago.js";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../state/AuthContext";
+/*変数の参照先、参照元が分からなくなったら
+  変数を右クリック→参照へ移動（または参照を検索）を押下する
+
+*/
+
 
 export default function Post({ post }) {
   const REACT_APP_PUBLIC_FOLDER = process.env.REACT_APP_PUBLIC_FOLDER;
@@ -12,6 +18,9 @@ export default function Post({ post }) {
   const [like, setLike] = useState(post.like.length);   
   const [isLiked, setIslike] = useState(false); 
   const [user, setUser] = useState({}); 
+  const {user:currentUser}=useContext(AuthContext);
+  //user→currentUserに名前を変更している
+  
 
   //const [like, setLike]→いいねが押された数をカウントする、初期値はlikeの数
   //const [isLiked, setIslike] →いいねが押されたかどうかの判断
@@ -25,7 +34,7 @@ export default function Post({ post }) {
       try {
         const resposnse = await axios.get(`/users?userId=${post.userId}`);
         setUser(resposnse.data);
-        console.log(resposnse);
+        // console.log(resposnse);
       } catch (e) {
         console.log("エラー");
       }
@@ -41,12 +50,24 @@ export default function Post({ post }) {
   .id→その配列のidを抽出
 */
 
-  const handleLike = () => {
+  const handleLike =async () => {
+    try{
+await axios.put(`/posts/${post._id}/like`,{userId:currentUser._id})
+      // console.log(test)
+      console.log(isLiked)
+      console.log(like)
+
+    }catch(e){
+      console.log(e);
+
+    }
+
     setLike(isLiked ? like - 1 : like + 1);
     setIslike(!isLiked); //いいねを押したら動作を逆にする。
     // setBackgroundColor();
+    console.log(isLiked)
   };
-  // console.log(post.userId)
+
   return (
     <div className="post">
       <div className="postWrapper">
@@ -56,7 +77,8 @@ export default function Post({ post }) {
             <img
               // プロフィール写真が存在する場合はそれを適用して、ない場合はデフォルトの画像を適用する。
               src={
-                user.profilePicture ||
+                user.profilePicture?
+                REACT_APP_PUBLIC_FOLDER + user.profilePicture :
                 REACT_APP_PUBLIC_FOLDER + "/person/noAvatar.png"
               }
               alt=""
@@ -65,6 +87,7 @@ export default function Post({ post }) {
             </Link>
             <span className="postUserName">{user.username}</span>
             <span className="postDate">{format(post.createdAt)}</span>
+            {/* formatの意味を調べる */}
           </div>
           <div className="postright">
             <MoreVert />
